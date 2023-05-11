@@ -1,0 +1,48 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/profile"
+        android:background="@color/teal_500"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_avatar"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/circle_radius"
+                 />
+
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="username"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/info_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="440dp"
+            android:layout_below="@+id/profile"
+            android:scrollbars="vertical" />/>
+    </LinearLayout>
+
+
+</RelativeLayout>

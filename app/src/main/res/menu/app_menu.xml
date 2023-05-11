@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <group android:id="@+id/group_main" android:checkableBehavior="single">
+        <item android:id="@+id/nav_chat"
+            android:title="Đoạn chat"
+            android:icon="@drawable/baseline_chat_bubble_24"/>
+        <item
+            android:id="@+id/nav_mess"
+            android:icon="@drawable/baseline_message_24"
+            android:title="Tin nhắn đang chờ" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/baseline_settings_24"
+            android:title="Settings" />
+    </group>
+</menu>
