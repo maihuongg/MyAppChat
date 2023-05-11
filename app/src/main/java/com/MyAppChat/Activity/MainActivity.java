@@ -1,4 +1,4 @@
-package com.example.myappchat;
+package com.MyAppChat.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -8,6 +8,8 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.example.myappchat.R;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;

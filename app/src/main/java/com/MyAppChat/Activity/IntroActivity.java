@@ -1,10 +1,12 @@
-package com.example.myappchat;
+package com.MyAppChat.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.myappchat.R;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -15,7 +17,8 @@ public class IntroActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(IntroActivity.this, MainActivity.class);
+                //check da dang nhap thi chuyen sang main
+                Intent intent = new Intent(IntroActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }

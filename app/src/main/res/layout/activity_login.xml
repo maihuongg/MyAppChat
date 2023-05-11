@@ -81,9 +81,10 @@
                         android:id="@+id/et_password"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
+                        android:layout_marginTop="15dp"
                         android:background="@drawable/retangle_radius"
-                        android:hint="Password"
 
+                        android:hint="Password"
                         android:inputType="textPassword"
                         android:paddingLeft="15dp"
                         android:textColor="#2fa881"
