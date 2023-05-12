@@ -15,6 +15,11 @@ public class ProfileActivity extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
+        Bundle args = getArguments();
+        if (args != null) {
+            String value = args.getString("userId");
+            // xử lý dữ liệu tại đây
+        }
         return inflater.inflate(R.layout.activity_profile,container,false);
     }
 }

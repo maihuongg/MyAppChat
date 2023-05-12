@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                 apiService.login(email, password).enqueue(new Callback<LoginResponse>() {
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                        //UserModel user = response.body().getUser();
+//                        UserModel user = response.body().getUser();
                         String access = null;
                         if (response.body() != null) {
                             access = response.body().getAccess();
