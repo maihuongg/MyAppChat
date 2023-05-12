@@ -7,47 +7,70 @@ import java.io.Serializable;
 
 public class LoginResponse implements Serializable {
 
-    private String refreshToken;
-    private String accessToken;
-
-    private int userId;
-
-    private String userEmail;
+    private String refresh;
+    private String access;
+    private int id;
+    private String user;
+    private int access_expires;
+    private int refresh_expires;
     private String detail;
-    private UserModel user;
 
-    private int accessExpires;
-
-    public String getRefreshToken() {
-        return refreshToken;
+    public LoginResponse(String refresh, String access, int id, String user, int access_expires, int refresh_expires, String detail) {
+        this.refresh = refresh;
+        this.access = access;
+        this.id = id;
+        this.user = user;
+        this.access_expires = access_expires;
+        this.refresh_expires = refresh_expires;
+        this.detail = detail;
     }
 
-    public void setRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
+    public String getRefresh() {
+        return refresh;
     }
 
-    public String getAccessToken() {
-        return accessToken;
+    public void setRefresh(String refresh) {
+        this.refresh = refresh;
     }
 
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
+    public String getAccess() {
+        return access;
     }
 
-    public int getUserId() {
-        return userId;
+    public void setAccess(String access) {
+        this.access = access;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public int getId() {
+        return id;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public int getAccess_expires() {
+        return access_expires;
+    }
+
+    public void setAccess_expires(int access_expires) {
+        this.access_expires = access_expires;
+    }
+
+    public int getRefresh_expires() {
+        return refresh_expires;
+    }
+
+    public void setRefresh_expires(int refresh_expires) {
+        this.refresh_expires = refresh_expires;
     }
 
     public String getDetail() {
@@ -56,31 +79,5 @@ public class LoginResponse implements Serializable {
 
     public void setDetail(String detail) {
         this.detail = detail;
-    }
-
-    public UserModel getUser() {
-        return user;
-    }
-
-    public void setUser(UserModel user) {
-        this.user = user;
-    }
-
-    public int getAccessExpires() {
-        return accessExpires;
-    }
-
-    public void setAccessExpires(int accessExpires) {
-        this.accessExpires = accessExpires;
-    }
-
-    public LoginResponse(String refreshToken, String accessToken, int userId, String userEmail, String detail, UserModel user, int accessExpires) {
-        this.refreshToken = refreshToken;
-        this.accessToken = accessToken;
-        this.userId = userId;
-        this.userEmail = userEmail;
-        this.detail = detail;
-        this.user = user;
-        this.accessExpires = accessExpires;
     }
 }

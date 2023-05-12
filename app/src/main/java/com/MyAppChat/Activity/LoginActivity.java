@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,24 +46,25 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = editTextUsername.getText().toString();
+                String email = editTextUsername.getText().toString();
                 String password = editTextPassword.getText().toString();
 
                 ApiService apiService = ApiClient.getApiService();
-                apiService.login(username, password).enqueue(new Callback<LoginResponse>() {
+                apiService.login(email, password).enqueue(new Callback<LoginResponse>() {
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-//                        UserModel user = response.body().getUser();
-//                        String message = response.body().getDetail();
-                        if(response.isSuccessful()) {
+                        //UserModel user = response.body().getUser();
+                        String access = null;
+                        if (response.body() != null) {
+                            access = response.body().getAccess();
+                        }
+                        if (access != null) {
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            String userName = response.body().getUser().getUsername();
-                            intent.putExtra("username", userName);
-
+                            int userId = response.body().getId();
+                            intent.putExtra("userId", userId);
                             startActivity(intent);
-                        }else{
-                            String message = response.body().getDetail();
-                            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Wrong Email or Password", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -74,9 +76,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
 
 
 }
