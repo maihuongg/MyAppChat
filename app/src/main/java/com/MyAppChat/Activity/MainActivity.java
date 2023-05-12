@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.myappchat.R;
@@ -20,6 +21,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        //xử lý put, get, intent
+        Intent intent = getIntent();
+        Integer userId = intent.getIntExtra("userId",0); // lấy userId từ login - Act-> Act
+        //Bunded để dùng trog Fragment Profile
+        Bundle bundleUserId = new Bundle();
+        bundleUserId.putInt("userId",userId);
 
         replaceFragment(new HomeActivity());
         binding.bottomNavigationView.setBackground(null);
@@ -36,7 +43,10 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.person:
+                    Fragment fragment = new ProfileActivity();
+                    fragment.setArguments(bundleUserId);
                     replaceFragment(new ProfileActivity());
+
                     break;
 
                 case R.id.settings:
@@ -54,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
+
         fragmentTransaction.commit();
     }
 }

@@ -1,6 +1,7 @@
 package com.MyAppChat.Model;
 
 public class UserModel {
+    //bao gồm user &user profile
     private int id;
     private String username;
     private  String password;

@@ -13,7 +13,7 @@ public class LoginResponse implements Serializable {
     private String user;
     private int access_expires;
     private int refresh_expires;
-    private String detail;
+    private String detail; //trả về khi email ||pass error
 
     public LoginResponse(String refresh, String access, int id, String user, int access_expires, int refresh_expires, String detail) {
         this.refresh = refresh;
