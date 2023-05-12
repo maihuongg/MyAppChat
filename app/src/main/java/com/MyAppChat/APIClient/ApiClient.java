@@ -5,12 +5,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class ApiClient  extends BaseClient{
-    private static final String BASE_URL_User= "http://127.0.0.1/user/";
+    private static final String BASE_URL= "http:172.30.208.1:8000/"; //localhost
     private static ApiService apiService;
 
     public static ApiService getApiService() {
         if (apiService == null) {
-            return createService(ApiService.class, BASE_URL_User);
+            return createService(ApiService.class, BASE_URL);
         }
         return apiService;
     }
