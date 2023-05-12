@@ -52,15 +52,16 @@ public class LoginActivity extends AppCompatActivity {
                 apiService.login(username, password).enqueue(new Callback<LoginResponse>() {
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                        UserModel user = response.body().getUser();
-                        String message = response.body().getDetail();
-                        if(user != null) {
+//                        UserModel user = response.body().getUser();
+//                        String message = response.body().getDetail();
+                        if(response.isSuccessful()) {
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             String userName = response.body().getUser().getUsername();
                             intent.putExtra("username", userName);
 
                             startActivity(intent);
                         }else{
+                            String message = response.body().getDetail();
                             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                         }
                     }
