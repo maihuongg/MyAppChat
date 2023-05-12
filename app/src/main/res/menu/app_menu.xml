@@ -8,13 +8,17 @@
         <item android:id="@+id/nav_chat"
             android:title="Đoạn chat"
             android:icon="@drawable/baseline_chat_bubble_24"/>
-        <item
-            android:id="@+id/nav_mess"
-            android:icon="@drawable/baseline_message_24"
-            android:title="Tin nhắn đang chờ" />
+<!--        <item-->
+<!--            android:id="@+id/nav_mess"-->
+<!--            android:icon="@drawable/baseline_message_24"-->
+<!--            android:title="Tin nhắn đang chờ" />-->
         <item
             android:id="@+id/nav_setting"
             android:icon="@drawable/baseline_settings_24"
             android:title="Settings" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/baseline_logout_24"
+            android:title="Logout" />
     </group>
 </menu>
