@@ -7,7 +7,7 @@
         android:title="Home"/>
 
     <item
-        android:id="@+id/Search"
+        android:id="@+id/friend"
         android:icon="@drawable/baseline_people_alt_24"
         android:title="Friends"/>
 
