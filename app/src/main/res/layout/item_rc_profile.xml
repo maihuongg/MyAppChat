@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="72dp"
+    android:layout_height="match_parent"
     android:background="@android:color/background_light"
     android:orientation="vertical"
     android:paddingBottom="16dp"
@@ -11,47 +11,247 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/img_icon"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_alignParentLeft="false"
-            app:srcCompat="@drawable/baseline_person_24" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center|left"
-            android:gravity="center|left"
-            android:orientation="vertical"
-            android:paddingLeft="15dp">
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/img_icon1"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="false"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_toRightOf="@+id/img_icon"
-                android:clickable="true"
-                android:text="Email"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                app:srcCompat="@drawable/baseline_person_outline_24" />
 
-            <TextView
-                android:id="@+id/tv_detail"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_title"
-                android:layout_alignLeft="@+id/tv_title"
-                android:layout_marginRight="16dp"
-                android:paddingLeft="15dp"
-                android:text="your_email@gmail.com"
-                android:textSize="14sp" />
+                android:layout_height="match_parent"
+                android:layout_gravity="center|left"
+                android:layout_marginRight="15dp"
+                android:gravity="center|left"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:id="@+id/tvFN"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="First Name"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/edtFN"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Nguyen Van"
+                    android:textSize="16sp"
+                    android:autofillHints="Name"
+                    android:inputType="text" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_icon2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="false"
+                android:layout_marginLeft="16dp"
+                app:srcCompat="@drawable/baseline_rename_outline_24" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|left"
+                android:layout_marginRight="15dp"
+                android:gravity="center|left"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:id="@+id/tvLN"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Last Name"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/edtLN"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="An"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_icon3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="16dp"
+                app:srcCompat="@drawable/baseline_email_24" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|left"
+                android:layout_marginRight="15dp"
+                android:gravity="center|left"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:id="@+id/tvemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Email"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/edtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="your_email@gmail.com"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_icon4"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="false"
+                android:layout_marginLeft="16dp"
+                app:srcCompat="@drawable/baseline_transgender_24" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|left"
+                android:layout_marginRight="15dp"
+                android:gravity="center|left"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:id="@+id/tvgender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Gender"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/edtgender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="your_email@gmail.com"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_icon5"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="false"
+                android:layout_marginLeft="16dp"
+                app:srcCompat="@drawable/baseline_date_range_24" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|left"
+                android:layout_marginRight="15dp"
+                android:gravity="center|left"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Birth Day"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/edtBday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="your_email@gmail.com"
+                    android:textSize="16sp" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
