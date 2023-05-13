@@ -60,8 +60,8 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         if (access != null) {
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            int userId = response.body().getId();
-                            intent.putExtra("userId", userId);
+                            int id = response.body().getId();
+                            intent.putExtra("id", id);
                             startActivity(intent);
                         } else {
                             Toast.makeText(getApplicationContext(), "Wrong Email or Password", Toast.LENGTH_SHORT).show();

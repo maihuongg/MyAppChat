@@ -3,18 +3,46 @@ package com.MyAppChat.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.myappchat.R;
 
 public class SettingActivity extends Fragment {
 
+    Button btnLogout;
+    Button btnChangePassword;
+    Button btnDarkTheme;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+
+
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
-        return inflater.inflate(R.layout.setting_layout,container,false);
+        View view = inflater.inflate(R.layout.setting_layout,container,false);
+        Bundle args = getArguments();
+
+        btnLogout = view.findViewById(R.id.btnLogout);
+        btnChangePassword = view.findViewById(R.id.btnChangePassword);
+        btnDarkTheme = view.findViewById(R.id.btnDarkTheme);
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
     }
 }

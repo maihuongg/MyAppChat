@@ -31,14 +31,14 @@
         <activity
             android:name="com.MyAppChat.Activity.IntroActivity"
             android:exported="false" />
-         <activity
-         android:name="com.MyAppChat.Activity.LoginActivity"
-         android:exported="false" />
-<!--        <activity-->
-<!--            android:name="com.MyAppChat.Activity.MainActivity"-->
-<!--            android:exported="false" />-->
+<!--         <activity-->
+<!--         android:name="com.MyAppChat.Activity.LoginActivity"-->
+<!--         android:exported="false" />-->
         <activity
             android:name="com.MyAppChat.Activity.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.MyAppChat.Activity.LoginActivity"
             android:exported="true"
             android:windowNoTitle="true">
             <intent-filter>
