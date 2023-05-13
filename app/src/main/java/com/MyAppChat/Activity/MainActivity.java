@@ -23,10 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         //xử lý put, get, intent
         Intent intent = getIntent();
-        Integer userId = intent.getIntExtra("userId",0); // lấy userId từ login - Act-> Act
-        //Bunded để dùng trog Fragment Profile
-        Bundle bundleUserId = new Bundle();
-        bundleUserId.putInt("userId",userId);
+        Integer userId = intent.getIntExtra("id",0); // lấy userId từ login - Act-> Act
 
         replaceFragment(new HomeActivity());
         binding.bottomNavigationView.setBackground(null);
@@ -43,10 +40,15 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.person:
-                    Fragment fragment = new ProfileActivity();
-                    fragment.setArguments(bundleUserId);
-                    replaceFragment(new ProfileActivity());
-
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    HomeActivity homeActivity = new HomeActivity();
+                    fragmentTransaction.replace(R.id.frame_layout, homeActivity);
+                    Bundle bundle =new Bundle();
+                    bundle.putInt("id",userId);
+                    homeActivity.setArguments(bundle);
+                    fragmentTransaction.commit();
+//                    replaceFragment(new ProfileActivity());
                     break;
 
                 case R.id.settings:
