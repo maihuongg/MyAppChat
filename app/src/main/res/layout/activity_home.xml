@@ -7,12 +7,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="672dp"
+        android:layout_height="match_parent"
         android:background="#FFFFFF"
         android:gravity="center"
         android:orientation="vertical"
         android:scrollbarSize="5dp"
-        android:weightSum="10"
         tools:layout_editor_absoluteY="65dp">
 
 
@@ -54,22 +53,19 @@
 
         </EditText>
 
-        <ListView
-            android:id="@+id/ListViewUserOnline"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleViewUser"
             android:layout_width="match_parent"
-            android:layout_height="102dp"
-            android:layout_weight="2"
+            android:layout_height="146dp"
+            android:layout_marginTop="5dp"
             android:background="@color/purple_200"
-            android:scrollbars="horizontal">
-
-        </ListView>
+            android:paddingLeft="20dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleViewChat"
-            android:layout_width="389dp"
-            android:layout_height="424dp"
+            android:layout_width="match_parent"
+            android:layout_height="650dp"
             android:layout_marginTop="5dp"
-            android:layout_weight="4"
             android:background="@color/purple_200"
             android:paddingLeft="20dp" />
 

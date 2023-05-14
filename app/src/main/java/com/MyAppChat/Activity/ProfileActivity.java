@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,8 +17,6 @@ import com.MyAppChat.APIClient.ApiClient;
 import com.MyAppChat.APIService.ApiService;
 import com.MyAppChat.Utils.ListFriendResponse;
 import com.MyAppChat.Utils.ProfileResponse;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.myappchat.R;
 
 import java.util.List;
@@ -36,7 +33,6 @@ TextView tvFriends;
     EditText edtBday;
     EditText edtGender;
     Button btnEdit,btnSave;
-    ImageView imgAvatar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,9 +44,6 @@ TextView tvFriends;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_profile, container, false);
         Bundle args = getArguments();
-
-
-
         tvUsername = view.findViewById(R.id.tvUsername);
         tvFriends = view.findViewById(R.id.tvFriends);
         edtFN = (EditText) view.findViewById(R.id.edtFN);
@@ -59,7 +52,6 @@ TextView tvFriends;
         edtGender = (EditText) view.findViewById(R.id.edtGender);
         btnEdit=(Button) view.findViewById(R.id.buttonEdit);
         btnSave= view.findViewById(R.id.buttonSave);
-        imgAvatar =view.findViewById(R.id.profile_image);
         //enabled editting
         edtFN.setEnabled(false);
         edtLN.setEnabled(false);
@@ -97,10 +89,6 @@ TextView tvFriends;
                     edtLN.setText(response.body().getLast_name());
                     edtBday.setText(response.body().getBirthday());
                     edtGender.setText(response.body().getGender());
-                    Glide.with(view)
-                            .load(response.body().getAvatar())
-                            .apply(RequestOptions.circleCropTransform())
-                            .override(350, 350).into(imgAvatar);
                 } else {
                     Toast.makeText(getActivity().getApplicationContext(), "Lỗi hệ thống", Toast.LENGTH_SHORT).show();
                 }
