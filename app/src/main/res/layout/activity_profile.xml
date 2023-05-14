@@ -106,7 +106,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="70dp"
                     android:layout_gravity="center|left"
                     android:layout_marginRight="15dp"
                     android:gravity="center|left"
@@ -120,24 +120,26 @@
                         android:layout_marginLeft="10dp"
                         android:text="First Name"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/edtFN"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
                         android:layout_marginLeft="10dp"
                         android:autofillHints="Name"
                         android:inputType="text"
                         android:text="Test"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        tools:ignore="LabelFor" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -157,7 +159,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="70dp"
                     android:layout_gravity="center|left"
                     android:layout_marginRight="15dp"
                     android:gravity="center|left"
@@ -171,12 +173,13 @@
                         android:layout_marginLeft="10dp"
                         android:text="Last Name"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/edtLN"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
                         android:layout_marginLeft="10dp"
                         android:text="An"
                         android:textSize="16sp" />
@@ -191,7 +194,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="70dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -220,12 +223,13 @@
                         android:layout_marginLeft="10dp"
                         android:text="Birth Day"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/edtBday"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
                         android:layout_marginLeft="10dp"
                         android:text="99/99/9999"
                         android:textSize="16sp" />
@@ -255,7 +259,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="70dp"
                     android:layout_gravity="center|left"
                     android:layout_marginRight="15dp"
                     android:gravity="center|left"
@@ -269,17 +273,59 @@
                         android:layout_marginLeft="10dp"
                         android:text="Gender"
                         android:textColor="@color/black"
-                        android:textSize="16sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/edtGender"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
                         android:layout_marginLeft="10dp"
                         android:text="male"
                         android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonEdit"
+                android:layout_width="145dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="#FFEB3B"
+                android:gravity="center"
+                android:text="EDIT"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:icon="@android:drawable/ic_menu_edit"
+                app:iconSize="36dp"
+                app:iconTint="#000000" />
+
+            <Button
+                android:id="@+id/buttonSave"
+                android:layout_width="145dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="#4CAF50"
+                android:gravity="center"
+                android:text="SAVE"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:icon="@android:drawable/ic_menu_save"
+                app:iconSize="36dp"
+                app:iconTint="#000000" />
         </LinearLayout>
     </LinearLayout>
 

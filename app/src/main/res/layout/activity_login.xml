@@ -20,7 +20,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
 
                 <View
                     android:layout_width="8dp"
@@ -42,59 +43,61 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center|top"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingStart="50dp"
-                    android:paddingEnd="30dp">
+                    android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/et_username"
+                        android:id="@+id/et_FirstName"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="15dp"
                         android:background="@drawable/retangle_radius"
+                        android:gravity="center|left"
                         android:hint="Username"
                         android:inputType="textEmailAddress"
                         android:paddingLeft="15dp"
                         android:paddingBottom="2dp"
                         android:textColor="#2fa881"
                         android:textCursorDrawable="@drawable/retangle_radius"
-                        android:textSize="13sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
                     android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingStart="50dp"
-                    android:paddingEnd="30dp">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/et_password"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@drawable/retangle_radius"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
 
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/retangle_radius"
+                        android:gravity="center|left"
                         android:hint="Password"
                         android:inputType="textPassword"
                         android:paddingLeft="15dp"
                         android:textColor="#2fa881"
-                        android:textSize="13sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="15dp"
                     android:gravity="center">
 
                     <Button
@@ -102,12 +105,12 @@
                         android:layout_width="150dp"
                         android:layout_height="50dp"
                         android:background="@drawable/retangle_radius"
-                        android:onClick="clickLogin"
                         android:text="LOGIN"
                         android:textColor="#d3d3d3" />
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/textViewForgot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -115,7 +118,43 @@
                     android:onClick="clickResetPassword"
                     android:text="Forgot your password ?"
                     android:textColor="#9a9a9a"
-                    android:textSize="12sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:onClick="clickResetPassword"
+                        android:text="Don't have an account ? "
+                        android:textColor="#9a9a9a"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewRegister"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:onClick="clickResetPassword"
+                        android:paddingLeft="10dp"
+                        android:text="Register here !."
+                        android:textColor="#2058FB"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
             </LinearLayout>
 

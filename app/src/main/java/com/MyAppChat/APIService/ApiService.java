@@ -4,6 +4,7 @@ package com.MyAppChat.APIService;
 import com.MyAppChat.Utils.ListFriendResponse;
 import com.MyAppChat.Utils.LoginResponse;
 import com.MyAppChat.Utils.ProfileResponse;
+import com.MyAppChat.Utils.RegisterRespone;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -30,4 +31,16 @@ public interface ApiService {
 
     @GET("friend/list/{id}")
     Call<List<ListFriendResponse>> getFriendList(@Path("id") int id);
+    @POST("user/register")
+    @FormUrlEncoded
+    Call<RegisterRespone> register(@Field("email") String email,
+                                   @Field("gender") String gender,
+                                   @Field("birthday") String birthday,
+                                   @Field("password") String password,
+                                   @Field("confirm_password") String confirm_password,
+                                   @Field("first_name") String first_name,
+                                   @Field("last_name") String lastname);
+
+
+
 }

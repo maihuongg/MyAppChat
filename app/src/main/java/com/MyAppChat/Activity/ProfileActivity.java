@@ -2,11 +2,13 @@ package com.MyAppChat.Activity;
 
 import androidx.fragment.app.Fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,12 +32,14 @@ TextView tvFriends;
     EditText edtLN;
     EditText edtBday;
     EditText edtGender;
+    Button btnEdit,btnSave;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_profile, container, false);
@@ -46,6 +50,29 @@ TextView tvFriends;
         edtLN = (EditText) view.findViewById(R.id.edtLN);
         edtBday = (EditText) view.findViewById(R.id.edtBday);
         edtGender = (EditText) view.findViewById(R.id.edtGender);
+        btnEdit=(Button) view.findViewById(R.id.buttonEdit);
+        btnSave= view.findViewById(R.id.buttonSave);
+        //enabled editting
+        edtFN.setEnabled(false);
+        edtLN.setEnabled(false);
+        edtBday.setEnabled(false);
+        edtGender.setEnabled(false);
+        btnSave.setVisibility(View.INVISIBLE);
+        //click button edit
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                edtFN.setEnabled(true);
+                edtLN.setEnabled(true);
+                edtBday.setEnabled(true);
+                edtGender.setEnabled(true);
+                //ẩn button edit
+                btnEdit.setVisibility(View.INVISIBLE);
+                //hiện button save
+                btnSave.setVisibility(View.VISIBLE);
+            }
+        });
+
         int id = 0;
         if (args != null) {
             id = args.getInt("id");
@@ -76,7 +103,8 @@ TextView tvFriends;
             @Override
             public void onResponse(Call<List<ListFriendResponse>> call, Response<List<ListFriendResponse>> response) {
                 if (response.body() != null) {
-                    tvFriends.setText(response.body().size());
+                    //đã fix
+                    tvFriends.setText(String.valueOf(response.body().size()));
                 } else {
                     Toast.makeText(getActivity().getApplicationContext(), "Lỗi hệ thống", Toast.LENGTH_SHORT).show();
                 }
@@ -87,7 +115,9 @@ TextView tvFriends;
 
             }
         });
+        //enable edit when click button Edit
 
         return view;
     }
+
 }

@@ -35,7 +35,7 @@
         <!--        </com.google.android.material.navigation.NavigationView>-->
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/edtSearch"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_gravity="center"
