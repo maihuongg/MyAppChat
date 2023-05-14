@@ -27,21 +27,19 @@
         android:windowNoTitle="true"
         tools:targetApi="31">
         <activity
-            android:name="com.MyAppChat.Activity.LoginActivity"
+            android:name="com.MyAppChat.Activity.RegisterActivity"
             android:exported="false" />
         <activity
             android:name="com.MyAppChat.Activity.LogOutActivity"
             android:exported="false" />
         <activity
             android:name="com.MyAppChat.Activity.IntroActivity"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name="com.MyAppChat.Activity.LoginActivity" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false" />
         <activity
             android:name="com.MyAppChat.Activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name="com.MyAppChat.Activity.RegisterActivity"
+            android:name="com.MyAppChat.Activity.LoginActivity"
             android:exported="true"
             android:windowNoTitle="true">
             <intent-filter>
