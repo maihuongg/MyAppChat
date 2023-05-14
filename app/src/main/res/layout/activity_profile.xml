@@ -168,7 +168,7 @@
                     android:paddingLeft="15dp">
 
                     <TextView
-                        android:id="@+id/tvLN"
+                        android:id="@+id/tvLaName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
