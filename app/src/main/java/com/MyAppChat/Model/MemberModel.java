@@ -1,5 +1,7 @@
 package com.MyAppChat.Model;
 
+import androidx.annotation.Nullable;
+
 import java.io.Serializable;
 
 public class MemberModel implements Serializable {
@@ -7,10 +9,11 @@ public class MemberModel implements Serializable {
     private UserMemberChat user;
     private String date_joined;
     private String role;
-    private boolean nickname;
+    private @Nullable String nickname;
     private int room_chat;
 
-    public MemberModel(int id, UserMemberChat user, String date_joined, String role, boolean nickname, int room_chat) {
+
+    public MemberModel(int id, UserMemberChat user, String date_joined, String role, @Nullable String nickname, int room_chat) {
         this.id = id;
         this.user = user;
         this.date_joined = date_joined;
@@ -51,11 +54,12 @@ public class MemberModel implements Serializable {
         this.role = role;
     }
 
-    public boolean isNickname() {
+    @Nullable
+    public String getNickname() {
         return nickname;
     }
 
-    public void setNickname(boolean nickname) {
+    public void setNickname(@Nullable String nickname) {
         this.nickname = nickname;
     }
 

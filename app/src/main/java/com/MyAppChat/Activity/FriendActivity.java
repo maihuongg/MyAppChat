@@ -28,17 +28,11 @@ public class FriendActivity extends Fragment {
     FriendAdapter friendAdapter;
     private RecyclerView rcvFriends;
     private List<DetailListFriendResponse> friendResponseList;
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.list_of_friend_layout,container,false);
-        return view;
-    }
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
-        super.onViewCreated(view, savedInstanceState);
-        Bundle args = getArguments();
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.list_of_friend_layout, container, false);
+        Bundle args = getArguments();
         int id = 0;
         String accessToken = "";
         Log.d("accessToken", accessToken);
@@ -55,7 +49,6 @@ public class FriendActivity extends Fragment {
             public void onResponse(Call<List<DetailListFriendResponse>> call, Response<List<DetailListFriendResponse>> response) {
 
                 friendResponseList = response.body();
-                Log.d("abc",friendResponseList.get(0).getResponseID().getFirst_name());
                 friendAdapter = new FriendAdapter(getContext(), friendResponseList);
                 rcvFriends.setHasFixedSize(true);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -64,10 +57,12 @@ public class FriendActivity extends Fragment {
                 rcvFriends.setAdapter(friendAdapter);
                 friendAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onFailure(Call<List<DetailListFriendResponse>> call, Throwable t) {
                 Log.d("Loi roi", "Loi fai");
             }
         });
+        return view;
     }
 }

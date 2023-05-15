@@ -3,6 +3,7 @@ package com.MyAppChat.Model;
 import androidx.annotation.Nullable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class LastMessageModel implements Serializable {
     private int id;
@@ -11,10 +12,11 @@ public class LastMessageModel implements Serializable {
     private String created;
     private boolean isRemoved;
     private int receiverID;
-    private String seen_by;
-    private String files;
+    private @Nullable String seen_by;
+    private ArrayList files;
 
-    public LastMessageModel(int id, UserMemberChat senderID, String content, String created, boolean isRemoved, int receiverID, String seen_by, String files) {
+
+    public LastMessageModel(int id, UserMemberChat senderID, String content, String created, boolean isRemoved, int receiverID, @Nullable String seen_by, ArrayList files) {
         this.id = id;
         this.senderID = senderID;
         this.content = content;
@@ -73,19 +75,20 @@ public class LastMessageModel implements Serializable {
         this.receiverID = receiverID;
     }
 
+    @Nullable
     public String getSeen_by() {
         return seen_by;
     }
 
-    public void setSeen_by(String seen_by) {
+    public void setSeen_by(@Nullable String seen_by) {
         this.seen_by = seen_by;
     }
 
-    public String getFiles() {
+    public ArrayList getFiles() {
         return files;
     }
 
-    public void setFiles(String files) {
+    public void setFiles(ArrayList files) {
         this.files = files;
     }
 }

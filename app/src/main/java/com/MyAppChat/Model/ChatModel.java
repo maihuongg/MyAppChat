@@ -1,5 +1,7 @@
 package com.MyAppChat.Model;
 
+import androidx.annotation.Nullable;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,7 +12,7 @@ public class ChatModel implements Serializable {
     private boolean isGroup;
     private LastMessageModel latest_message;
     private String updated;
-    private String roomAvatar;
+    private @Nullable String roomAvatar;
 
     public ChatModel(int id, String roomName, List<MemberModel> members, boolean isGroup, LastMessageModel latest_message, String updated, String roomAvatar) {
         this.id = id;

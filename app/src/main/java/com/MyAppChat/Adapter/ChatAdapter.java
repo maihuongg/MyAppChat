@@ -20,7 +20,7 @@ import com.example.myappchat.R;
 
 import java.util.List;
 
-public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
+public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
     private Context context;
     private List<ChatModel> dataList;
@@ -42,22 +42,24 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ChatModel chatModel = dataList.get(position);
         holder.tvUserNameChat.setText(chatModel.getLatest_message().getSenderID().getEmail());
+        String url = "http:192.168.1.2:8000" + chatModel.getLatest_message().getSenderID().getAvatar();
         Glide.with(context)
-                .load(chatModel.getLatest_message().getSenderID().getAvatar())
+                .load(url)
                 .into(holder.imgAvaChat);
     }
 
     @Override
     public int getItemCount() {
 
-        return 0;
+        return (dataList == null ? 0 : dataList.size());
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView imgAvaChat;
         private TextView tvUserNameChat;
         private TextView tvLastChat;
         private LinearLayout layoutChat;
+
         public ViewHolder(final View itemView) {
             super(itemView);
             imgAvaChat = (ImageView) itemView.findViewById(R.id.imgAvaChat);

@@ -15,10 +15,11 @@ import com.example.myappchat.R;
 
 import java.util.List;
 
-public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder>{
+public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder> {
 
     private Context context;
     private List<DetailListFriendResponse> dataList;
+
     public FriendAdapter(Context context, List<DetailListFriendResponse> dataList) {
         this.context = context;
         this.dataList = dataList;
@@ -34,25 +35,24 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         DetailListFriendResponse friendModel = dataList.get(position);
-        holder.firstNameTextView.setText(friendModel.getResponseID().getFirst_name());
-        Glide.with(context)
-                .load(friendModel.getResponseID().getAvatar())
-                .into(holder.avatarImageView);
+        holder.firstNameTextView.setText(friendModel.getResponseID().getFirst_name() + " " + friendModel.getResponseID().getLast_name());
+        Glide.with(context).load(friendModel.getResponseID().getAvatar()).into(holder.avatarImageView);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return dataList == null ? 0 : dataList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView avatarImageView;
         TextView firstNameTextView;
 
         public ViewHolder(final View itemView) {
             super(itemView);
             avatarImageView = itemView.findViewById(R.id.imgvAva);
-            firstNameTextView = itemView.findViewById(R.id.tvFiName);
+            firstNameTextView = itemView.findViewById(R.id.tvFullName);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

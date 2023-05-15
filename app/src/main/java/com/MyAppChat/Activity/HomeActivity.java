@@ -51,16 +51,13 @@ public class HomeActivity extends Fragment {
                 chatModelList = response.body();
                 if(response.body()!=null){
                     Log.d("abc", String.valueOf(response.body().size()));
-                    Log.d("aaaa", "test");
-                    System.out.println(response.body().size());
-
                 }
                 else{
                     Log.d("error","Loi");
                 }
-                chatAdapter = new ChatAdapter(getActivity().getApplicationContext(), chatModelList);
+                chatAdapter = new ChatAdapter(getContext(), chatModelList);
                 recycleViewChat.setHasFixedSize(true);
-                recycleViewChat.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+                recycleViewChat.setLayoutManager(new LinearLayoutManager(getContext()));
                 recycleViewChat.setAdapter(chatAdapter);
                 chatAdapter.notifyDataSetChanged();
             }
