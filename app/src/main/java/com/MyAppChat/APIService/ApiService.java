@@ -1,5 +1,7 @@
 package com.MyAppChat.APIService;
 
+import com.MyAppChat.Model.PasswordModel;
+import com.MyAppChat.Model.UpdateProfileModal;
 import com.MyAppChat.Utils.ChangePasswordResponse;
 import com.MyAppChat.Utils.ListFriendResponse;
 import com.MyAppChat.Utils.LoginResponse;
@@ -52,19 +54,17 @@ public interface ApiService {
                                    @Field("confirm_password") String confirm_password,
                                    @Field("first_name") String first_name,
                                    @Field("last_name") String lastname);
-
     @PATCH("user/profile/update")
-    @Headers({ "Content-Type: application/json;charset=UTF-8"})
-    Call<ProfileResponse> updateProfile( @Body JSONObject obj,
-                                        @Header("Authorization") String Authorization);
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    Call<ProfileResponse> updateProfile(@Header("Authorization") String Authorization, @Body UpdateProfileModal body);
 
 
 //    data class PasswordData(val String password);
 
+
     @POST("user/validate/password")
-    @Headers({ "Content-Type: application/json;charset=UTF-8"})
-    Call<ChangePasswordResponse> updatePassword(@Header("Authorization") String Authorization,
-                                                     @Body JSONObject obj);
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    Call<ChangePasswordResponse> updatePassword(@Header("Authorization") String Authorization, @Body PasswordModel body);
 
     @GET("friend/list/detail/{id}")
     Call<List<ListFriendResponse>> getDetailFriendList(@Path("id") int id);

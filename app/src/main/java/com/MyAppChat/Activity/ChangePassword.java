@@ -107,7 +107,7 @@ public class ChangePassword extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), "New password is different Confirm new password", Toast.LENGTH_SHORT).show();
                                     }
                                 }
-                                    else{
+                                else{
                                     Toast.makeText(getApplicationContext(), "Wrong current password", Toast.LENGTH_SHORT).show();
                                 }
                             } else Log.d("Error", "Loi");
