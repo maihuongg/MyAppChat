@@ -22,6 +22,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.myappchat.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -79,10 +82,15 @@ public class ProfileActivity extends Fragment {
         });
 
         int id = 0;
+        String accessToken = "";
+        Log.d("accessToken", accessToken);
         if (args != null) {
             id = args.getInt("id");
+            accessToken = args.getString("access");
             // xử lý dữ liệu tại đây
         }
+        String finalAccessToken = accessToken;
+        Log.d("accessTokenSetting", finalAccessToken);
         //setText
         ApiService apiService = ApiClient.getApiService();
         apiService.getProfile(id).enqueue(new Callback<ProfileResponse>() {
@@ -126,6 +134,41 @@ public class ProfileActivity extends Fragment {
         });
         //enable edit when click button Edit
 
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String first_name = edtFN.getText().toString();
+                String last_name = edtLN.getText().toString();
+                String gender = edtGender.getText().toString();
+                String bday = edtBday.getText().toString();
+
+                JSONObject obj;
+                try {
+                    obj = new JSONObject();
+                    obj.put("first_name", first_name);
+                    obj.put("last_name", last_name);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+                apiService.updateProfile(obj,
+                        "Bearer " + finalAccessToken).enqueue(new Callback<ProfileResponse>() {
+                    @Override
+                    public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
+                        if (response.body() != null) {
+                            String test = response.body().getFirst_name();
+                            Log.d("abc", test);
+                        }
+                        else
+                            Log.d("error", "loi");
+                    }
+
+                    @Override
+                    public void onFailure(Call<ProfileResponse> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
         return view;
     }
 

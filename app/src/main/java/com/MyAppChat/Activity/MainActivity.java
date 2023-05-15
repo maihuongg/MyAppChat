@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         //xử lý put, get, intent
         Intent intent = getIntent();
         int userId = intent.getIntExtra("id",0); // lấy userId từ login - Act-> Act
-
+        String accessToken = intent.getStringExtra("access");
         replaceFragment(new HomeActivity());
         binding.bottomNavigationView.setBackground(null);
 
@@ -42,29 +42,28 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.person:
-                    Process p=null;
-                    try {
-                        p = new ProcessBuilder()
-                                .command("token.js")
-                                .start();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } finally {
-                        if(p!=null) p.destroy();
-                    }
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     ProfileActivity profileActivity = new ProfileActivity();
                     fragmentTransaction.replace(R.id.frame_layout, profileActivity);
                     Bundle bundle =new Bundle();
                     bundle.putInt("id",userId);
+                    bundle.putString("access",accessToken);
                     profileActivity.setArguments(bundle);
                     fragmentTransaction.commit();
 //                    replaceFragment(new ProfileActivity());
                     break;
 
                 case R.id.settings:
-                    replaceFragment(new SettingActivity());
+                    FragmentManager fragmentManager1 = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction1 = fragmentManager1.beginTransaction();
+                    SettingActivity settingActivity = new SettingActivity();
+                    fragmentTransaction1.replace(R.id.frame_layout, settingActivity);
+                    Bundle bundle1 =new Bundle();
+                    bundle1.putString("access",accessToken);
+                    settingActivity.setArguments(bundle1);
+                    fragmentTransaction1.commit();
+                    //replaceFragment(new SettingActivity());
                     break;
             }
 

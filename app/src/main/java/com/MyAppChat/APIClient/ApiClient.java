@@ -4,8 +4,8 @@ import com.MyAppChat.APIService.ApiService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class ApiClient  extends BaseClient{
-    private static final String BASE_URL= "http:192.168.1.3:8000/"; //localhost
+public class ApiClient extends BaseClient {
+    private static final String BASE_URL = "http:192.168.1.3:8000/"; //localhost
     private static ApiService apiService;
 
     public static ApiService getApiService() {
@@ -14,5 +14,6 @@ public class ApiClient  extends BaseClient{
         }
         return apiService;
     }
-    Gson gson= new GsonBuilder().setDateFormat("yyyy MM dd HH:mm:ss").create();
+
+    Gson gson = new GsonBuilder().setDateFormat("yyyy MM dd HH:mm:ss").create();
 }
