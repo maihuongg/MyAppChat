@@ -1,8 +1,10 @@
 package com.MyAppChat.APIService;
 
+import com.MyAppChat.Model.ChatModel;
 import com.MyAppChat.Model.PasswordModel;
 import com.MyAppChat.Model.UpdateProfileModal;
 import com.MyAppChat.Utils.ChangePasswordResponse;
+import com.MyAppChat.Utils.DetailListFriendResponse;
 import com.MyAppChat.Utils.ListFriendResponse;
 import com.MyAppChat.Utils.LoginResponse;
 import com.MyAppChat.Utils.ProfileResponse;
@@ -67,5 +69,10 @@ public interface ApiService {
     Call<ChangePasswordResponse> updatePassword(@Header("Authorization") String Authorization, @Body PasswordModel body);
 
     @GET("friend/list/detail/{id}")
-    Call<List<ListFriendResponse>> getDetailFriendList(@Path("id") int id);
+    Call<List<DetailListFriendResponse>> getDetailFriendList(@Path("id") int id);
+
+
+    @GET("/chat/room/list")
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    Call<List<ChatModel>> getChatList(@Header("Authorization") String Authorization);
 }

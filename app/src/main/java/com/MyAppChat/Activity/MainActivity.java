@@ -34,11 +34,28 @@ public class MainActivity extends AppCompatActivity {
 
             switch (item.getItemId()) {
                 case R.id.home:
-                    replaceFragment(new HomeActivity());
+                    FragmentManager fragmentManager2 = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
+                    HomeActivity homeActivity = new HomeActivity();
+                    fragmentTransaction2.replace(R.id.frame_layout, homeActivity);
+                    Bundle bundle2 =new Bundle();
+                    bundle2.putString("access",accessToken);
+                    homeActivity.setArguments(bundle2);
+                    fragmentTransaction2.commit();
+                    //replaceFragment(new HomeActivity());
                     break;
 
                 case R.id.friend:
-                    replaceFragment(new FriendActivity());
+                    FragmentManager fragmentManager3 = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction3 = fragmentManager3.beginTransaction();
+                    FriendActivity friendActivity = new FriendActivity();
+                    fragmentTransaction3.replace(R.id.frame_layout, friendActivity);
+                    Bundle bundle3 =new Bundle();
+                    bundle3.putInt("id",userId);
+                    bundle3.putString("access",accessToken);
+                    friendActivity.setArguments(bundle3);
+                    fragmentTransaction3.commit();
+                    //replaceFragment(new FriendActivity());
                     break;
 
                 case R.id.person:
@@ -65,6 +82,15 @@ public class MainActivity extends AppCompatActivity {
                     fragmentTransaction1.commit();
                     //replaceFragment(new SettingActivity());
                     break;
+                default:
+                    FragmentManager fragmentManager5 = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction5 = fragmentManager5.beginTransaction();
+                    HomeActivity homeActivity1 = new HomeActivity();
+                    fragmentTransaction5.replace(R.id.frame_layout, homeActivity1);
+                    Bundle bundle5 =new Bundle();
+                    bundle5.putString("access",accessToken);
+                    homeActivity1.setArguments(bundle5);
+                    fragmentTransaction5.commit();
             }
 
             return true;

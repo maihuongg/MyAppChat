@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/layoutChat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
@@ -18,7 +19,7 @@
         android:weightSum="10">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imgAvaChat"
             android:layout_width="65dp"
             android:layout_height="65dp"
             app:srcCompat="@drawable/circle_radius" />
@@ -33,7 +34,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textViewUserName"
+                android:id="@+id/tvUserNameChat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -42,7 +43,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textViewLastChat"
+                android:id="@+id/tvLastChat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="last message"
