@@ -28,6 +28,10 @@ public class UserModel {
         this.created = created;
     }
 
+    public UserModel() {
+
+    }
+
 
     public int getId() {
         return id;

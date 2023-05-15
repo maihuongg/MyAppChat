@@ -34,7 +34,7 @@
         <!--        </com.google.android.material.navigation.NavigationView>-->
 
         <EditText
-            android:id="@+id/edtSearch"
+            android:id="@+id/edtSearchHome"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_gravity="center"
@@ -56,7 +56,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleViewUser"
             android:layout_width="match_parent"
-            android:layout_height="146dp"
+            android:layout_height="125dp"
             android:layout_marginTop="5dp"
             android:background="@color/purple_200"
             android:paddingLeft="20dp" />
@@ -64,7 +64,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleViewChat"
             android:layout_width="match_parent"
-            android:layout_height="650dp"
+            android:layout_height="513dp"
             android:layout_marginTop="5dp"
             android:background="@color/purple_200"
             android:paddingLeft="20dp" />

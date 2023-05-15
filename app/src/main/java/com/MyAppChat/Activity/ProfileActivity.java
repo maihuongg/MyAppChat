@@ -16,15 +16,11 @@ import android.widget.Toast;
 
 import com.MyAppChat.APIClient.ApiClient;
 import com.MyAppChat.APIService.ApiService;
-import com.MyAppChat.Model.PasswordModel;
-import com.MyAppChat.Model.UpdateProfileModal;
 import com.MyAppChat.Utils.ListFriendResponse;
 import com.MyAppChat.Utils.ProfileResponse;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.myappchat.R;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,7 +38,7 @@ public class ProfileActivity extends Fragment {
     EditText edtLN;
     EditText edtBday;
     EditText edtGender;
-    Button btnEdit, btnSave;
+    Button btnEdit,btnSave;
     ImageView imgAvatar;
 
     @Override
@@ -61,9 +57,9 @@ public class ProfileActivity extends Fragment {
         edtLN = (EditText) view.findViewById(R.id.edtLN);
         edtBday = (EditText) view.findViewById(R.id.edtBday);
         edtGender = (EditText) view.findViewById(R.id.edtGender);
-        btnEdit = (Button) view.findViewById(R.id.buttonEdit);
-        btnSave = view.findViewById(R.id.buttonSave);
-        imgAvatar = view.findViewById(R.id.profile_image);
+        btnEdit=(Button) view.findViewById(R.id.buttonEdit);
+        btnSave= view.findViewById(R.id.buttonSave);
+        imgAvatar =view.findViewById(R.id.profile_image);
         //enabled editting
         edtFN.setEnabled(false);
         edtLN.setEnabled(false);
@@ -106,7 +102,10 @@ public class ProfileActivity extends Fragment {
                     edtLN.setText(response.body().getLast_name());
                     edtBday.setText(response.body().getBirthday());
                     edtGender.setText(response.body().getGender());
-                    Glide.with(view).load(response.body().getAvatar()).apply(RequestOptions.circleCropTransform()).override(350, 350).into(imgAvatar);
+                    Glide.with(view)
+                            .load(response.body().getAvatar())
+                            .apply(RequestOptions.circleCropTransform())
+                            .override(350, 350).into(imgAvatar);
                 } else {
                     Toast.makeText(getActivity().getApplicationContext(), "Lỗi hệ thống", Toast.LENGTH_SHORT).show();
                 }
@@ -143,33 +142,31 @@ public class ProfileActivity extends Fragment {
                 String gender = edtGender.getText().toString();
                 String bday = edtBday.getText().toString();
 
-                if (first_name.isEmpty() || last_name.isEmpty() || gender.isEmpty() || bday.isEmpty()) {
-                    Toast.makeText(getActivity().getApplicationContext(), "All filed are required.", Toast.LENGTH_SHORT).show();
-                } else {
-                    String jsonString = String.format("{\"first_name\":\"" + first_name + "\"," + "\"last_name\":\"" + last_name + "\"," + "\"gender\":\"" + gender + "\"," + "\"birthday\":\"" + bday + "\"}");
-
-                    GsonBuilder builder = new GsonBuilder();
-                    builder.setPrettyPrinting();
-                    Gson gson = builder.create();
-                    UpdateProfileModal updateProfileModal = gson.fromJson(jsonString, UpdateProfileModal.class);
-//Log.d("abcd", String.valueOf(updateProfileModal));
-//                    jsonString = gson.toJson(updateProfileModal);
-//                    Log.d("abcd", jsonString);
-                    apiService.updateProfile("Bearer " + finalAccessToken, updateProfileModal).enqueue(new Callback<ProfileResponse>() {
-                        @Override
-                        public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
-                            if (response.body() != null) {
-                                String test = response.body().getFirst_name();
-                                Log.d("abc", test);
-                            } else Log.d("error", "loi");
-                        }
-
-                        @Override
-                        public void onFailure(Call<ProfileResponse> call, Throwable t) {
-
-                        }
-                    });
+                JSONObject obj;
+                try {
+                    obj = new JSONObject();
+                    obj.put("first_name", first_name);
+                    obj.put("last_name", last_name);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
                 }
+                apiService.updateProfile(obj,
+                        "Bearer " + finalAccessToken).enqueue(new Callback<ProfileResponse>() {
+                    @Override
+                    public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
+                        if (response.body() != null) {
+                            String test = response.body().getFirst_name();
+                            Log.d("abc", test);
+                        }
+                        else
+                            Log.d("error", "loi");
+                    }
+
+                    @Override
+                    public void onFailure(Call<ProfileResponse> call, Throwable t) {
+
+                    }
+                });
             }
         });
         return view;
