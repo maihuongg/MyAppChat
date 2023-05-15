@@ -1,5 +1,7 @@
 package com.MyAppChat.APIService;
 
+import com.MyAppChat.Model.PasswordModel;
+import com.MyAppChat.Model.UpdateProfileModal;
 import com.MyAppChat.Utils.ChangePasswordResponse;
 import com.MyAppChat.Utils.ListFriendResponse;
 import com.MyAppChat.Utils.LoginResponse;
@@ -35,36 +37,27 @@ import retrofit2.http.Query;
 public interface ApiService {
     @POST("user/login")
     @FormUrlEncoded
-    Call<LoginResponse> login(@Field("email") String email,
-                        @Field("password") String password);
+    Call<LoginResponse> login(@Field("email") String email, @Field("password") String password);
 
     @GET("user/profile/{id}")
     Call<ProfileResponse> getProfile(@Path("id") int id);
 
     @GET("friend/list/{id}")
     Call<List<ListFriendResponse>> getFriendList(@Path("id") int id);
+
     @POST("user/register")
     @FormUrlEncoded
-    Call<RegisterRespone> register(@Field("email") String email,
-                                   @Field("gender") String gender,
-                                   @Field("birthday") String birthday,
-                                   @Field("password") String password,
-                                   @Field("confirm_password") String confirm_password,
-                                   @Field("first_name") String first_name,
-                                   @Field("last_name") String lastname);
+    Call<RegisterRespone> register(@Field("email") String email, @Field("gender") String gender, @Field("birthday") String birthday, @Field("password") String password, @Field("confirm_password") String confirm_password, @Field("first_name") String first_name, @Field("last_name") String lastname);
 
     @PATCH("user/profile/update")
-    @Headers({ "Content-Type: application/json;charset=UTF-8"})
-    Call<ProfileResponse> updateProfile( @Body JSONObject obj,
-                                        @Header("Authorization") String Authorization);
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    Call<ProfileResponse> updateProfile(@Header("Authorization") String Authorization, @Body UpdateProfileModal body);
 
 
 //    data class PasswordData(val String password);
 
+
     @POST("user/validate/password")
-    @Headers({ "Content-Type: application/json;charset=UTF-8"})
-    Call<ChangePasswordResponse> updatePassword(@Header("Authorization") String Authorization,
-                                                     @Body JSONObject obj);
-
-
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    Call<ChangePasswordResponse> updatePassword(@Header("Authorization") String Authorization, @Body PasswordModel body);
 }

@@ -13,8 +13,13 @@ import android.widget.Toast;
 
 import com.MyAppChat.APIClient.ApiClient;
 import com.MyAppChat.APIService.ApiService;
+import com.MyAppChat.Model.PasswordModel;
+import com.MyAppChat.Model.UpdateProfileModal;
 import com.MyAppChat.Utils.ChangePasswordResponse;
+import com.MyAppChat.Utils.ProfileResponse;
 import com.example.myappchat.R;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,25 +63,45 @@ public class ChangePassword extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "All filed are required.", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    JSONObject obj;
-                    try {
-                        obj = new JSONObject();
-                        obj.put("password", currentPassword);
-                    } catch (JSONException e) {
-                        throw new RuntimeException(e);
-                    }
-//                    Log.d("abc", currentPassword);
-                    Log.d("abc", obj.toString());
+
+
+                    String jsonString = String.format("{\"password\":\"" + currentPassword+ "\"}");
+                    GsonBuilder builder = new GsonBuilder();
+                    builder.setPrettyPrinting();
+                    Gson gson = builder.create();
+                    PasswordModel passwordModel = gson.fromJson(jsonString, PasswordModel.class);
+                    //Log.d("abcd", String.valueOf(test));
+                    //jsonString = gson.toJson(passwordModel);
+                    //Log.d("abcd", jsonString);
 
                     ApiService apiService = ApiClient.getApiService();
-                    apiService.updatePassword("Bearer " + accessToken, obj).enqueue(new Callback<ChangePasswordResponse>() {
+                    apiService.updatePassword("Bearer " + accessToken, passwordModel).enqueue(new Callback<ChangePasswordResponse>() {
                         @Override
                         public void onResponse(Call<ChangePasswordResponse> call, Response<ChangePasswordResponse> response) {
 
                             if (response.body() != null) {
                                 if(response.body().isStatus()){
-                                    if(newPassword == confirmNewPassword){
+                                    if(newPassword.equals(confirmNewPassword)){
 
+                                        String jsonString = String.format("{\"password\":\"" + newPassword+ "\"}");
+                                        GsonBuilder builder = new GsonBuilder();
+                                        builder.setPrettyPrinting();
+                                        Gson gson = builder.create();
+                                        UpdateProfileModal updateProfileModal = gson.fromJson(jsonString, UpdateProfileModal.class);
+                                        apiService.updateProfile("Bearer " + accessToken, updateProfileModal).enqueue(new Callback<ProfileResponse>() {
+                                            @Override
+                                            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
+                                                if (response.body() != null) {
+                                                    Toast.makeText(getApplicationContext(), "Updated success", Toast.LENGTH_SHORT).show();
+
+                                                } else Log.d("error", "loi");
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+
+                                            }
+                                        });
                                     }
                                     else{
                                         Toast.makeText(getApplicationContext(), "New password is different Confirm new password", Toast.LENGTH_SHORT).show();
