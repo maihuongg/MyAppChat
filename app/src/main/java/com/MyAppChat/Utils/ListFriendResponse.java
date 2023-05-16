@@ -24,6 +24,9 @@ public class ListFriendResponse implements Serializable {
         return id;
     }
 
+    public ListFriendResponse() {
+    }
+
     public void setId(int id) {
         this.id = id;
     }

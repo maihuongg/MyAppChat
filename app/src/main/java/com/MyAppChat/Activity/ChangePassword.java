@@ -21,12 +21,6 @@ import com.example.myappchat.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,7 +44,7 @@ public class ChangePassword extends AppCompatActivity {
         edtCurrentPassword = (EditText) findViewById(R.id.edtCurrentPassword);
         edtNewPassword = (EditText) findViewById(R.id.edtNewPassword);
         edtConfirmNewPassword = (EditText) findViewById(R.id.edtConfirmNewPassword);
-        btnSaveChangePassword = (Button) findViewById(R.id.btnSaveChangePassword);
+        btnSaveChangePassword = (Button) findViewById(R.id.btnBackHome);
 
         btnSaveChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override

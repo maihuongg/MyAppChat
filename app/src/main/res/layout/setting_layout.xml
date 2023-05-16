@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:backgroundTint="@color/teal_200"
+    android:orientation="vertical">
 
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/teal_500"
         android:drawableLeft="@drawable/baseline_settings_24"
         android:drawablePadding="15dp"
+        android:paddingLeft="20dp"
         android:text="SETTINGS"
         android:textColor="@color/black"
         android:textSize="34sp"
@@ -26,6 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
 
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/purple_500"
         android:drawableLeft="@drawable/baseline_password_24"
         android:gravity="center|left"
         android:paddingLeft="20dp"
@@ -34,22 +36,44 @@
         android:textStyle="bold"
         app:icon="@drawable/baseline_password_24" />
 
-    <Button
-        android:id="@+id/btnDarkTheme"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:drawableLeft="@drawable/baseline_password_24"
-        android:gravity="center|left"
-        android:paddingLeft="20dp"
-        android:text="DARK THEME"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:icon="@drawable/baseline_password_24" />
+        android:layout_marginBottom="15dp"
+        android:background="@color/purple_500"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <Button
+            android:id="@+id/btndarktheme"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+
+            android:layout_marginBottom="15dp"
+            android:layout_weight="3"
+            android:backgroundTint="@color/purple_500"
+            android:gravity="center|left"
+            android:paddingLeft="10dp"
+            android:text="DARK THEME"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:icon="@drawable/baseline_change_circle_36" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:paddingRight="25dp" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/purple_500"
         android:drawableLeft="@drawable/baseline_logout_24"
         android:gravity="center|left"
         android:paddingLeft="20dp"
