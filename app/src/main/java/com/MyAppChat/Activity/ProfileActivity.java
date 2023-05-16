@@ -163,7 +163,6 @@ public class ProfileActivity extends Fragment {
                                 Log.d("abc", test);
                             } else Log.d("error", "loi");
                         }
-
                         @Override
                         public void onFailure(Call<ProfileResponse> call, Throwable t) {
 

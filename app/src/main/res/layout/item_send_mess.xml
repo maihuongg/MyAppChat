@@ -8,24 +8,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:orientation="horizontal"
+        android:paddingLeft="15dp"
         android:weightSum="10">
 
         <TextView
-            android:id="@+id/tvContentRecieve"
+            android:id="@+id/tvContentSend"
             android:layout_width="200dp"
             android:layout_height="match_parent"
             android:layout_weight="9"
             android:gravity="center|right"
             android:paddingLeft="20dp"
             android:text="tin nhắn nè"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/imgAvaRecieve"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:id="@+id/imgAvaSend"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
             android:layout_weight="1"
             android:paddingLeft="50dp"
             android:paddingRight="20dp" />

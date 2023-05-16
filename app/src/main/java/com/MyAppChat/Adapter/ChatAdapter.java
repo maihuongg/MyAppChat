@@ -33,8 +33,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     private List<ChatModel> dataList;
     private int id;
     private String access;
-    private String nameChat;
-    private String avaUrl;
 
     public ChatAdapter(Context context, List<ChatModel> dataList, int id, String access) {
         this.context = context;
@@ -54,7 +52,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ChatModel chatModel = dataList.get(position);
-        nameChat = "";
+        String nameChat = "";
         if (chatModel.isGroup()) {
             for(MemberModel memberModel:chatModel.getMembers()){
                 nameChat += memberModel.getUser().getLast_name() + ", ";
@@ -66,9 +64,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         }
         holder.tvUserNameChat.setText(nameChat);
         holder.tvLastChat.setText(chatModel.getLatest_message().getContent());
-        avaUrl = "http:192.168.1.2:8000" + chatModel.getLatest_message().getSenderID().getAvatar();
+        String avaUrl = "http:192.168.1.2:8000" + chatModel.getLatest_message().getSenderID().getAvatar();
         Glide.with(context).load(avaUrl).into(holder.imgAvaChat);
-        //holder.imgAvaChat.buildDrawingCache();
     }
 
     @Override
@@ -89,23 +86,18 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             tvUserNameChat = (TextView) itemView.findViewById(R.id.tvUserNameChat);
             tvLastChat = (TextView) itemView.findViewById(R.id.tvLastChat);
             layoutChat = (LinearLayout) itemView.findViewById(R.id.layoutChat);
-
-            //Bitmap image= imgAvaChat.getDrawingCache();
             layoutChat.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    int chatRoomId = 1;
                     //click vào friend chuyển sang chat
                     Intent intent = new Intent(context, MessageActivity.class);
-                    //Bundle extras = new Bundle();
-                    //extras.putParcelable("imagebitmap", image);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    //int id = response.body().getId();
                     intent.putExtra("id", id);
+                    intent.putExtra("chatRoomId", dataList.get(getAdapterPosition()).getId());
                     intent.putExtra("accessToken", access);
                     intent.putExtra("nameChat", tvUserNameChat.getText());
-                    //intent.putExtra("avaUrl", tempUrl);
-                    //intent.putExtras(extras);
+                    intent.putExtra("avaUrl", dataList.get(getAdapterPosition()).getLatest_message().getSenderID().getAvatar());
                     context.startActivity(intent);
                 }
             });

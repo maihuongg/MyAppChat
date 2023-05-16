@@ -3,6 +3,7 @@ package com.MyAppChat.APIService;
 import com.MyAppChat.Model.ChatModel;
 import com.MyAppChat.Model.LastMessageModel;
 import com.MyAppChat.Model.PasswordModel;
+import com.MyAppChat.Model.SendMessageModel;
 import com.MyAppChat.Model.UpdateProfileModal;
 import com.MyAppChat.Utils.ChangePasswordResponse;
 import com.MyAppChat.Utils.DetailListFriendResponse;
@@ -10,6 +11,7 @@ import com.MyAppChat.Utils.ListFriendResponse;
 import com.MyAppChat.Utils.LoginResponse;
 import com.MyAppChat.Utils.ProfileResponse;
 import com.MyAppChat.Utils.RegisterRespone;
+import com.MyAppChat.Utils.SendMessageResponse;
 
 import java.util.List;
 
@@ -64,4 +66,8 @@ public interface ApiService {
     @GET("chat/message/list/{id}")
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     Call<List<LastMessageModel>> getChatMessageList(@Header("Authorization") String Authorization, @Path("id") int id);
+
+    @POST("chat/message/send")
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    Call<SendMessageResponse> sendChat(@Header("Authorization") String Authorization, @Body SendMessageModel body);
 }
