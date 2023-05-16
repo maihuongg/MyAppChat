@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.MyAppChat.Utils.DetailListFriendResponse;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.myappchat.R;
 
 import java.util.List;
@@ -36,7 +37,11 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
         DetailListFriendResponse friendModel = dataList.get(position);
         holder.firstNameTextView.setText(friendModel.getResponseID().getFirst_name() + " " + friendModel.getResponseID().getLast_name());
-        Glide.with(context).load(friendModel.getResponseID().getAvatar()).into(holder.avatarImageView);
+//        Glide.with(context).load(friendModel.getResponseID().getAvatar()).into(holder.avatarImageView);
+        Glide.with(context).load(friendModel.getResponseID().getAvatar())
+                .apply(RequestOptions.circleCropTransform())
+                .override(250, 250).into(holder.avatarImageView);
+
     }
 
     @Override
