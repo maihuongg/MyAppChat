@@ -59,41 +59,13 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/edtSearchHome"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/retangle_radius"
-            android:drawableRight="@drawable/baseline_search_24"
-            android:fontFamily="sans-serif"
-            android:gravity="center|left"
-            android:hint="Search"
-            android:inputType="text"
-            android:paddingLeft="30dp"
-            android:textSize="20sp">
-
-        </EditText>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycleViewUser"
-            android:layout_width="match_parent"
-            android:layout_height="125dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/purple_200"
-            android:paddingLeft="20dp" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleViewChat"
             android:layout_width="match_parent"
             android:layout_height="513dp"
             android:layout_marginTop="5dp"
             android:background="@color/purple_200"
-            android:paddingLeft="20dp" />
+            android:paddingLeft="15dp" />
 
 
     </LinearLayout>

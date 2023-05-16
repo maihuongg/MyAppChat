@@ -9,13 +9,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.MyAppChat.APIClient.ApiClient;
 import com.MyAppChat.APIService.ApiService;
 import com.MyAppChat.Adapter.FriendAdapter;
+import com.MyAppChat.Model.ChatModel;
+import com.MyAppChat.Model.MemberModel;
 import com.MyAppChat.Utils.DetailListFriendResponse;
 import com.example.myappchat.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -26,6 +30,9 @@ public class FriendActivity extends Fragment {
     FriendAdapter friendAdapter;
     private RecyclerView rcvFriends;
     private List<DetailListFriendResponse> friendResponseList;
+    private List<ChatModel> chatModelList;
+    private List<Integer> integerList;
+    private EditText edtSearchFriends;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,17 +46,47 @@ public class FriendActivity extends Fragment {
             accessToken = args.getString("access");
             // xử lý dữ liệu tại đây
         }
-        Log.d("accessTokenF", accessToken);
-        Log.d("accessTokenF1", String.valueOf(id));
+        int finalId = id;
         String finalAccessToken = accessToken;
         rcvFriends = (RecyclerView) view.findViewById(R.id.rcvFriends);
+        integerList = new ArrayList<>();
+        edtSearchFriends = view.findViewById(R.id.edtSearchFriends);
+        callFirstAPI(finalId,finalAccessToken);
+
+        return view;
+    }
+
+    private void callFirstAPI(int finalId, String finalAccessToken){
         ApiService apiService = ApiClient.getApiService();
-        apiService.getDetailFriendList(id).enqueue(new Callback<List<DetailListFriendResponse>>() {
+        //Tra ve IDRoom
+        apiService.getChatList("Bearer " + finalAccessToken).enqueue(new Callback<List<ChatModel>>() {
+            @Override
+            public void onResponse(Call<List<ChatModel>> call, Response<List<ChatModel>> response) {
+                chatModelList = response.body();
+
+                for(ChatModel chatModel:chatModelList){
+                    integerList.add(chatModel.getId());
+                }
+                callSecondAPI(finalId,finalAccessToken);
+
+            }
+            @Override
+            public void onFailure(Call<List<ChatModel>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void callSecondAPI(int finalId, String finalAccessToken){
+        ApiService apiService = ApiClient.getApiService();
+        //Trả về friend
+        apiService.getDetailFriendList(finalId).enqueue(new Callback<List<DetailListFriendResponse>>() {
             @Override
             public void onResponse(Call<List<DetailListFriendResponse>> call, Response<List<DetailListFriendResponse>> response) {
 
                 friendResponseList = response.body();
-                friendAdapter = new FriendAdapter(getContext(), friendResponseList);
+                Log.d("abcd", String.valueOf(integerList));
+                friendAdapter = new FriendAdapter(getContext(), friendResponseList, finalId, finalAccessToken, integerList);
                 rcvFriends.setHasFixedSize(true);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
                 rcvFriends.setLayoutManager(layoutManager);
@@ -63,6 +100,5 @@ public class FriendActivity extends Fragment {
                 Log.d("Loi roi", "Loi fai");
             }
         });
-        return view;
     }
 }

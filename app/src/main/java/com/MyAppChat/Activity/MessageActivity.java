@@ -87,8 +87,6 @@ public class MessageActivity extends AppCompatActivity {
                 apiService.sendChat("Bearer " + accessToken, sendMessageModel).enqueue(new Callback<SendMessageResponse>() {
                     @Override
                     public void onResponse(Call<SendMessageResponse> call, Response<SendMessageResponse> response) {
-                        SendMessageResponse sendMessageResponse = response.body();
-                        Log.d("abc", sendMessageResponse.getContent());
                     }
 
                     @Override

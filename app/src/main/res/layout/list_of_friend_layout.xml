@@ -46,6 +46,8 @@
         android:fontFamily="sans-serif"
         android:gravity="center|left"
         android:hint="Search"
+        android:imeActionId="@android:integer/config_mediumAnimTime"
+        android:imeOptions="actionSearch"
         android:inputType="text"
         android:paddingLeft="30dp"
         android:textSize="20sp">
