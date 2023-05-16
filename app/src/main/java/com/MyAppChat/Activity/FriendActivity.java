@@ -33,12 +33,14 @@ public class FriendActivity extends Fragment {
         Bundle args = getArguments();
         int id = 0;
         String accessToken = "";
-        Log.d("accessToken", accessToken);
+
         if (args != null) {
             id = args.getInt("id");
             accessToken = args.getString("access");
             // xử lý dữ liệu tại đây
         }
+        Log.d("accessTokenF", accessToken);
+        Log.d("accessTokenF1", String.valueOf(id));
         String finalAccessToken = accessToken;
         rcvFriends = (RecyclerView) view.findViewById(R.id.rcvFriends);
         ApiService apiService = ApiClient.getApiService();

@@ -1,6 +1,7 @@
 package com.MyAppChat.APIService;
 
 import com.MyAppChat.Model.ChatModel;
+import com.MyAppChat.Model.LastMessageModel;
 import com.MyAppChat.Model.PasswordModel;
 import com.MyAppChat.Model.UpdateProfileModal;
 import com.MyAppChat.Utils.ChangePasswordResponse;
@@ -48,9 +49,6 @@ public interface ApiService {
     Call<ProfileResponse> updateProfile(@Header("Authorization") String Authorization, @Body UpdateProfileModal body);
 
 
-//    data class PasswordData(val String password);
-
-
     @POST("user/validate/password")
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     Call<ChangePasswordResponse> updatePassword(@Header("Authorization") String Authorization, @Body PasswordModel body);
@@ -62,4 +60,8 @@ public interface ApiService {
     @GET("/chat/room/list")
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     Call<List<ChatModel>> getChatList(@Header("Authorization") String Authorization);
+
+    @GET("chat/message/list/{id}")
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    Call<List<LastMessageModel>> getChatMessageList(@Header("Authorization") String Authorization, @Path("id") int id);
 }

@@ -36,12 +36,15 @@ public class HomeActivity extends Fragment {
 
         int id = 0;
         String accessToken = "";
-        Log.d("accessToken", accessToken);
         if (args != null) {
             id = args.getInt("id");
             accessToken = args.getString("access");
             // xử lý dữ liệu tại đây
         }
+        //Log.d("accessToken", accessToken);
+        //Log.d("accessTokenTest", String.valueOf(id));
+
+        int finalId = id;
         String finalAccessToken = accessToken;
         recycleViewChat = (RecyclerView) view.findViewById(R.id.recycleViewChat);
         ApiService apiService = ApiClient.getApiService();
@@ -49,13 +52,7 @@ public class HomeActivity extends Fragment {
             @Override
             public void onResponse(Call<List<ChatModel>> call, Response<List<ChatModel>> response) {
                 chatModelList = response.body();
-                if(response.body()!=null){
-                    Log.d("abc", String.valueOf(response.body().size()));
-                }
-                else{
-                    Log.d("error","Loi");
-                }
-                chatAdapter = new ChatAdapter(getContext(), chatModelList);
+                chatAdapter = new ChatAdapter(getContext(), chatModelList, finalId, finalAccessToken);
                 recycleViewChat.setHasFixedSize(true);
                 recycleViewChat.setLayoutManager(new LinearLayoutManager(getContext()));
                 recycleViewChat.setAdapter(chatAdapter);
@@ -65,7 +62,6 @@ public class HomeActivity extends Fragment {
             @Override
             public void onFailure(Call<List<ChatModel>> call, Throwable t) {
                 Log.d("Loi","Loi fai");
-
             }
         });
         return view;
