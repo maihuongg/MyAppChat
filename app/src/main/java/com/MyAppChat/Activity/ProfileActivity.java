@@ -152,9 +152,7 @@ public class ProfileActivity extends Fragment {
                     builder.setPrettyPrinting();
                     Gson gson = builder.create();
                     UpdateProfileModal updateProfileModal = gson.fromJson(jsonString, UpdateProfileModal.class);
-//Log.d("abcd", String.valueOf(updateProfileModal));
-//                    jsonString = gson.toJson(updateProfileModal);
-//                    Log.d("abcd", jsonString);
+
                     apiService.updateProfile("Bearer " + finalAccessToken, updateProfileModal).enqueue(new Callback<ProfileResponse>() {
                         @Override
                         public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {

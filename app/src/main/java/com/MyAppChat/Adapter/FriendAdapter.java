@@ -122,11 +122,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.ViewHolder
 
         private void CheckChatRoom(RoomDetailResponse roomDetailResponse, int friendId){
             for(MemberModel memberModel : roomDetailResponse.getMembers()){
-                Log.d("abcde" + roomDetailResponse.getId(), String.valueOf(memberModel.getUser().getId()));
-                Log.d("abcd", String.valueOf(friendId));
-                Log.d("abcd", String.valueOf(!roomDetailResponse.isGroup()));
                 if(memberModel.getUser().getId() == friendId && !roomDetailResponse.isGroup()){
-
                     Intent intent = new Intent(context, MessageActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("id", userId);

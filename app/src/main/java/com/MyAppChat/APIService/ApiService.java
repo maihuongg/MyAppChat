@@ -1,5 +1,6 @@
 package com.MyAppChat.APIService;
 
+import com.MyAppChat.Model.AddFriendModel;
 import com.MyAppChat.Model.ChatModel;
 import com.MyAppChat.Model.CreateChatRoomModel;
 import com.MyAppChat.Model.LastMessageModel;
@@ -88,4 +89,7 @@ public interface ApiService {
     @Headers({"Content-Type: application/json;charset=UTF-8"})
     Call<CreateChatRoomResponse> updateChatRoom(@Header("Authorization") String Authorization, @Body UpdateChatRoomModel body, @Path("id") int id);
 
+    @POST("chat/room/new")
+    @Headers({"Content-Type: application/json;charset=UTF-8"})
+    Call<DetailListFriendResponse> addFriend(@Header("Authorization") String Authorization, @Body AddFriendModel body);
 }

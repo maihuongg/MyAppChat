@@ -69,7 +69,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         }
         holder.tvUserNameChat.setText(nameChat);
         holder.tvLastChat.setText(chatModel.getLatest_message().getSenderID().getId()==id?"You: " + chatModel.getLatest_message().getContent():chatModel.getLatest_message().getContent());
-        String avaUrl = "http:192.168.1.2:8000" + chatModel.getLatest_message().getSenderID().getAvatar();
+        String avaUrl = "http://192.168.43.20:8000" + chatModel.getLatest_message().getSenderID().getAvatar();
         Glide.with(context).load(avaUrl).apply(RequestOptions.circleCropTransform()).override(250, 250).into(holder.imgAvaChat);
     }
 
@@ -94,8 +94,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             layoutChat.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int chatRoomId = 1;
-                    //click vào friend chuyển sang chat
+                    //click vào chat chuyển sang message
                     Intent intent = new Intent(context, MessageActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("id", id);
