@@ -34,7 +34,7 @@
             android:name="com.MyAppChat.Activity.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name="com.MyAppChat.Activity.IntroActivity"
+            android:name="com.MyAppChat.Activity.LoginActivity"
             android:exported="false" />
         <activity
             android:name="com.MyAppChat.Activity.MainActivity"
@@ -46,7 +46,7 @@
             android:name="com.MyAppChat.Activity.FriendProfileActivity"
             android:exported="false" />
         <activity
-            android:name="com.MyAppChat.Activity.LoginActivity"
+            android:name="com.MyAppChat.Activity.IntroActivity"
             android:exported="true"
             android:windowNoTitle="true">
             <intent-filter>

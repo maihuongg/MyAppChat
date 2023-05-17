@@ -41,7 +41,6 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvChatMessage"
-        style="@style/DarkRecyclerViewTheme"
         android:layout_width="match_parent"
         android:layout_height="586dp"
         android:layout_weight="6"

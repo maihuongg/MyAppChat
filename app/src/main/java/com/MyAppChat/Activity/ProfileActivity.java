@@ -157,9 +157,15 @@ public class ProfileActivity extends Fragment {
                         @Override
                         public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
                             if (response.body() != null) {
-                                String test = response.body().getFirst_name();
-                                Log.d("abc", test);
-                            } else Log.d("error", "loi");
+                                Toast.makeText(getActivity().getApplicationContext(), "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+                                //ẩn button edit
+                                btnEdit.setVisibility(View.VISIBLE);
+                                //hiện button save
+                                btnSave.setVisibility(View.INVISIBLE);
+                            } else {
+                                Toast.makeText(getActivity().getApplicationContext(), "Lỗi cú pháp", Toast.LENGTH_SHORT).show();
+
+                            };
                         }
                         @Override
                         public void onFailure(Call<ProfileResponse> call, Throwable t) {

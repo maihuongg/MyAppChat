@@ -26,6 +26,8 @@ import com.MyAppChat.Adapter.MessageAdapter;
 import com.MyAppChat.Model.LastMessageModel;
 import com.MyAppChat.Model.SendMessageModel;
 import com.MyAppChat.Utils.SendMessageResponse;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.myappchat.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,8 +50,6 @@ public class MessageActivity extends AppCompatActivity {
     private int userId;
     private int chatRoomId;
     private Handler mHandler;
-    private boolean isBottom = true;
-    private int position;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,12 +69,15 @@ public class MessageActivity extends AppCompatActivity {
         String nameChat = intent.getStringExtra("nameChat");
         String avaUrl = intent.getStringExtra("avaUrl");
         chatRoomId = intent.getIntExtra("chatRoomId", 0);
-
+        Log.d("abc",avaUrl);
+        Log.d("abc",nameChat);
         //Anh xa
         AnhXa();
 
         //Set
         tvNameChat.setText(nameChat);
+        Glide.with(getApplicationContext()).load("http://172.30.208.1:8000" +avaUrl).apply(RequestOptions.circleCropTransform())
+                .override(40, 40).into(imgAvaMessage);
 
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,14 +101,15 @@ public class MessageActivity extends AppCompatActivity {
                         onPause();
                     }
                 });
+                edtMessage.setText("");
             }
         });
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        boolean isDarkModeEnabled = sharedPreferences.getBoolean("night",false );
-// Set the initial state of the switch
-        if (isDarkModeEnabled) {
-            rcvChatMessage.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_background));
-        }
+//        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+//        boolean isDarkModeEnabled = sharedPreferences.getBoolean("night",false );
+//// Set the initial state of the switch
+//        if (isDarkModeEnabled) {
+//            rcvChatMessage.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_background));
+//        }
     }
 
     private void AnhXa() {
@@ -139,7 +143,7 @@ public class MessageActivity extends AppCompatActivity {
                     Log.d("Loi", "Loi fai");
                 }
             });
-            MessageActivity.this.mHandler.postDelayed(m_Runnable, 200);
+            MessageActivity.this.mHandler.postDelayed(m_Runnable, 500);
         }
 
     };//runnable

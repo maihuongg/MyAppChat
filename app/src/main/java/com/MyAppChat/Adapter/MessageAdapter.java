@@ -50,16 +50,16 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             case 0:
                 ViewHolder0 viewHolder0 = (ViewHolder0) holder;
                 LastMessageModel lastMessageModel = dataList.get(position);
-                viewHolder0.tvContentSend.setText(lastMessageModel.getContent());
+                viewHolder0.tvContentRecieve.setText(lastMessageModel.getContent());
                 Glide.with(context).load(lastMessageModel.getSenderID().getAvatar()).apply(RequestOptions.circleCropTransform())
-                        .override(250, 250).into(viewHolder0.imgAvaSend);
+                        .override(250, 250).into(viewHolder0.imgAvaRecieve);
                 break;
             case 1:
                 ViewHolder1 viewHolder1 = (ViewHolder1) holder;
                 LastMessageModel lastMessageModel1 = dataList.get(position);
-                viewHolder1.tvContentRecieve.setText(lastMessageModel1.getContent());
+                viewHolder1.tvContentSend.setText(lastMessageModel1.getContent());
                 Glide.with(context).load(lastMessageModel1.getSenderID().getAvatar()).apply(RequestOptions.circleCropTransform())
-                        .override(250, 250).into(viewHolder1.imgAvaRecieve);
+                        .override(250, 250).into(viewHolder1.imgAvaSend);
                 break;
         }
     }
@@ -77,28 +77,28 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public class ViewHolder0 extends RecyclerView.ViewHolder {
 
-        private ImageView imgAvaSend;
-        private TextView tvContentSend;
+        private ImageView imgAvaRecieve;
+        private TextView tvContentRecieve;
 
         public ViewHolder0(@NonNull View itemView) {
 
             super(itemView);
-            imgAvaSend = (ImageView) itemView.findViewById(R.id.imgAvaSend);
-            tvContentSend = (TextView) itemView.findViewById(R.id.tvContentSend);
+            imgAvaRecieve = (ImageView) itemView.findViewById(R.id.imgAvaRecieve);
+            tvContentRecieve = (TextView) itemView.findViewById(R.id.tvContentRecieve);
 
         }
     }
 
     public class ViewHolder1 extends RecyclerView.ViewHolder {
 
-        private ImageView imgAvaRecieve;
-        private TextView tvContentRecieve;
+        private ImageView imgAvaSend;
+        private TextView tvContentSend;
 
         public ViewHolder1(@NonNull View itemView) {
 
             super(itemView);
-            imgAvaRecieve = (ImageView) itemView.findViewById(R.id.imgAvaSend);
-            tvContentRecieve = (TextView) itemView.findViewById(R.id.tvContentSend);
+            imgAvaSend = (ImageView) itemView.findViewById(R.id.imgAvaSend);
+            tvContentSend = (TextView) itemView.findViewById(R.id.tvContentSend);
 
         }
     }

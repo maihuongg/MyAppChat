@@ -3,6 +3,7 @@ package com.MyAppChat.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
@@ -68,9 +69,19 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             nameChat = (chatModel.getMembers().get(0).getId() == id ? chatModel.getMembers().get(0).getUser().getFirst_name() + " " + chatModel.getMembers().get(0).getUser().getLast_name() : chatModel.getMembers().get(1).getUser().getFirst_name() + " " + chatModel.getMembers().get(1).getUser().getLast_name());
         }
         holder.tvUserNameChat.setText(nameChat);
-        holder.tvLastChat.setText(chatModel.getLatest_message().getSenderID().getId()==id?"You: " + chatModel.getLatest_message().getContent():chatModel.getLatest_message().getContent());
-        String avaUrl = "http://192.168.43.20:8000" + chatModel.getLatest_message().getSenderID().getAvatar();
-        Glide.with(context).load(avaUrl).apply(RequestOptions.circleCropTransform()).override(250, 250).into(holder.imgAvaChat);
+        if (chatModel.getLatest_message().getSenderID().getId() == id) {
+            holder.tvLastChat.setText("You: " + chatModel.getLatest_message().getContent());
+        } else {
+            holder.tvLastChat.setText(chatModel.getLatest_message().getContent());
+            holder.tvLastChat.setTypeface(Typeface.DEFAULT_BOLD);
+        }
+        String avaUrl = "";
+        for (MemberModel memberModel : chatModel.getMembers()) {
+            if (memberModel.getUser().getId() != id)
+                avaUrl = memberModel.getUser().getAvatar();
+        }
+        String finalAvaUrl = "http://172.30.208.1:8000" + avaUrl;
+        Glide.with(context).load(finalAvaUrl).apply(RequestOptions.circleCropTransform()).override(250, 250).into(holder.imgAvaChat);
     }
 
     @Override
