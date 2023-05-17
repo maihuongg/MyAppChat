@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DarkRecyclerViewTheme" parent="Theme.AppCompat">
+        <item name="android:background">@color/dark_background</item>
+    </style>
+</resources>

@@ -1,6 +1,8 @@
 package com.MyAppChat.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -97,6 +100,12 @@ public class MessageActivity extends AppCompatActivity {
                 });
             }
         });
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean isDarkModeEnabled = sharedPreferences.getBoolean("night",false );
+// Set the initial state of the switch
+        if (isDarkModeEnabled) {
+            rcvChatMessage.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.dark_background));
+        }
     }
 
     private void AnhXa() {

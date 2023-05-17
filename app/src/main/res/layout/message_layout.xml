@@ -41,6 +41,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvChatMessage"
+        style="@style/DarkRecyclerViewTheme"
         android:layout_width="match_parent"
         android:layout_height="586dp"
         android:layout_weight="6"
@@ -65,8 +66,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Name" />
+                android:hint="Enter something ..."
+                android:inputType="text" />
 
             <Button
                 android:id="@+id/btnSend"

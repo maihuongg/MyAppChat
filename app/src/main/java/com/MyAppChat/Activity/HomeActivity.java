@@ -1,10 +1,13 @@
 package com.MyAppChat.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -64,6 +67,12 @@ public class HomeActivity extends Fragment {
                 Log.d("Loi","Loi fai");
             }
         });
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean isDarkModeEnabled = sharedPreferences.getBoolean("night", false);
+// Set the initial state of the switch
+        if (isDarkModeEnabled) {
+            recycleViewChat.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_background));
+        }
         return view;
     }
 }
